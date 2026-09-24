@@ -1,0 +1,444 @@
+<title>AJ &amp; Bro's Concreting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#E6E4DF; --surface:#F2F1ED; --surface-2:#DAD8D2; --ink:#1B1D20; --muted:#5A5D5C;
+  --line:#C4C1BA; --accent:#E3A20B; --accent-ink:#1B1D20; --stone-a:#8C8780; --stone-b:#B7B0A5; --stone-c:#6E6A64;
+  --paste:#CFCBC4;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#151719; --surface:#1E2124; --surface-2:#272A2E; --ink:#ECEAE4; --muted:#A3A39E;
+    --line:#34383C; --accent:#F2B705; --accent-ink:#151719; --stone-a:#5E5A55; --stone-b:#7B766E; --stone-c:#46433F;
+    --paste:#3A3C3E; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#151719; --surface:#1E2124; --surface-2:#272A2E; --ink:#ECEAE4; --muted:#A3A39E;
+  --line:#34383C; --accent:#F2B705; --accent-ink:#151719; --stone-a:#5E5A55; --stone-b:#7B766E; --stone-c:#46433F;
+  --paste:#3A3C3E; color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3{font-family:var(--display);font-stretch:125%;font-weight:850;line-height:1.02;letter-spacing:-.01em;margin:0;text-wrap:balance;text-transform:uppercase}
+p{margin:0}
+a{color:inherit}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:34px;height:34px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--display);font-stretch:125%;font-weight:900;font-size:14px}
+.brand-name{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:17px;text-transform:uppercase;letter-spacing:.01em;line-height:1}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{text-decoration:none;font-weight:600;font-size:15px}
+.nav-links a:hover{text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:3px;text-underline-offset:6px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--accent-ink);border:0;font-family:var(--display);font-stretch:112%;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:.03em;padding:14px 22px;text-decoration:none;cursor:pointer;transition:transform .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+@media (max-width:760px){.nav-links a:not(.btn){display:none}.nav .btn{padding:10px 14px;font-size:13px}}
+
+/* hero */
+.hero{padding-block:clamp(40px,7vw,88px) 0}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,56px);align-items:end}
+.hero h1{font-size:clamp(44px,8.4vw,112px)}
+.hero h1 .hl{background:linear-gradient(transparent 58%,var(--accent) 58%,var(--accent) 92%,transparent 92%);padding-inline:.04em}
+.hero-copy{display:grid;gap:28px}
+.hero-copy p.lede{font-size:clamp(18px,1.6vw,21px);max-width:34ch;color:var(--muted)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
+.slab{position:relative;aspect-ratio:4/5;max-width:100%;background:var(--paste);overflow:hidden}
+.slab canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slab-tag{position:absolute;left:0;bottom:0;background:var(--ink);color:var(--bg);padding:12px 16px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.slab{aspect-ratio:16/10}}
+
+.spec-strip{margin-top:clamp(40px,6vw,72px);border-top:2px solid var(--ink);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}
+.spec{padding:18px 20px 18px 0;display:grid;gap:4px}
+.spec + .spec{padding-left:20px;border-left:1px solid var(--line)}
+.spec b{font-family:var(--display);font-stretch:125%;font-weight:850;font-size:clamp(26px,3vw,36px);line-height:1;font-variant-numeric:tabular-nums}
+@media (max-width:760px){.spec-strip{grid-template-columns:1fr 1fr}.spec:nth-child(3){padding-left:0;border-left:0}.spec:nth-child(n+3){border-top:1px solid var(--line)}}
+
+section{padding-block:clamp(64px,9vw,112px)}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:24px 48px;align-items:end;margin-bottom:clamp(32px,5vw,56px)}
+.sec-head h2{font-size:clamp(34px,5vw,60px)}
+.sec-head p{color:var(--muted);max-width:52ch}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.svc{padding:28px 26px 30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-rows:auto auto 1fr auto;gap:12px;background:var(--bg);transition:background .2s ease}
+.svc:hover{background:var(--surface)}
+.svc h3{font-size:22px;font-stretch:115%}
+.svc p{color:var(--muted);font-size:16px}
+.svc .spec-line{font-family:var(--mono);font-size:12.5px;color:var(--ink);border-top:1px dashed var(--line);padding-top:12px;letter-spacing:.02em}
+.svc-icon{width:40px;height:6px;background:var(--accent)}
+@media (max-width:960px){.services{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.services{grid-template-columns:1fr}}
+
+/* finishes */
+.finishes-sec{background:var(--surface)}
+.finishes{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.finish{display:grid;gap:10px}
+.finish canvas{width:100%;aspect-ratio:1;display:block;background:var(--paste)}
+.finish h3{font-size:16px;font-stretch:110%}
+.finish p{font-size:14.5px;color:var(--muted);line-height:1.5}
+@media (max-width:960px){.finishes{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:560px){.finishes{grid-template-columns:1fr 1fr}}
+
+/* process */
+.process{display:grid;grid-template-columns:repeat(5,1fr);gap:0;counter-reset:step}
+.step{padding:0 20px 0 0;display:grid;gap:10px;position:relative}
+.step .num{font-family:var(--display);font-stretch:125%;font-weight:900;font-size:56px;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+.step .bar{height:4px;background:var(--line);position:relative}
+.step .bar::after{content:"";position:absolute;left:0;top:0;height:100%;width:34px;background:var(--accent)}
+.step h3{font-size:18px;font-stretch:110%}
+.step p{font-size:15.5px;color:var(--muted)}
+.step .when{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink);text-transform:uppercase}
+@media (max-width:960px){.process{grid-template-columns:1fr 1fr;gap:36px 0}}
+@media (max-width:560px){.process{grid-template-columns:1fr}}
+
+/* calculator */
+.calc-sec{background:var(--ink);color:var(--bg)}
+.calc-sec .label{color:color-mix(in srgb,var(--bg) 65%,var(--ink))}
+.calc-sec .sec-head p{color:color-mix(in srgb,var(--bg) 72%,var(--ink))}
+.calc{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,56px);align-items:start}
+.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.field{display:grid;gap:8px}
+.field label{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--bg) 70%,var(--ink))}
+.field input,.field select{width:100%;background:transparent;color:var(--bg);border:0;border-bottom:2px solid color-mix(in srgb,var(--bg) 40%,var(--ink));font-family:var(--display);font-stretch:115%;font-weight:750;font-size:32px;padding:6px 0;font-variant-numeric:tabular-nums;border-radius:0}
+.field select{font-size:32px;appearance:none;cursor:pointer}
+.field select option{color:#1B1D20;background:#F2F1ED}
+.field input:focus,.field select:focus{outline:none;border-bottom-color:var(--accent)}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.chip{background:transparent;color:var(--bg);border:1px solid color-mix(in srgb,var(--bg) 35%,var(--ink));font-family:var(--mono);font-size:12.5px;padding:8px 12px;cursor:pointer}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.result{background:var(--accent);color:var(--accent-ink);padding:28px;display:grid;gap:18px}
+.result .big{font-family:var(--display);font-stretch:125%;font-weight:900;font-size:clamp(56px,7vw,84px);line-height:.9;font-variant-numeric:tabular-nums}
+.result .big small{font-size:.38em;font-weight:800;margin-left:6px}
+.result .label{color:var(--accent-ink);opacity:.8}
+.result dl{display:grid;grid-template-columns:1fr auto;gap:8px 16px;margin:0;border-top:1px solid color-mix(in srgb,var(--accent-ink) 30%,var(--accent));padding-top:16px;font-size:15px}
+.result dt{margin:0}
+.result dd{margin:0;font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.result .note{font-size:13.5px;line-height:1.5}
+@media (max-width:860px){.calc{grid-template-columns:1fr}}
+@media (max-width:520px){.fields{grid-template-columns:1fr 1fr}.fields .field:last-child{grid-column:1 / -1}}
+
+/* why */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,40px)}
+.why-item{display:grid;gap:10px;border-top:2px solid var(--ink);padding-top:18px}
+.why-item h3{font-size:20px;font-stretch:112%}
+.why-item p{color:var(--muted)}
+@media (max-width:760px){.why{grid-template-columns:1fr}}
+
+/* quote */
+.quote-sec{border-top:1px solid var(--line)}
+.quote{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,72px);align-items:start}
+.quote-info{display:grid;gap:26px}
+.quote-info h2{font-size:clamp(36px,5vw,64px)}
+.contact-list{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+.contact-list li{display:grid;grid-template-columns:110px 1fr;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px;align-items:baseline}
+.contact-list strong{font-family:var(--display);font-stretch:110%;font-weight:750;font-size:19px;user-select:all}
+form.qf{background:var(--surface);padding:clamp(20px,3vw,36px);display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.qf .f{display:grid;gap:6px}
+.qf .full{grid-column:1 / -1}
+.qf label{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.qf input,.qf select,.qf textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);padding:12px 14px;border-radius:0}
+.qf textarea{min-height:110px;resize:vertical}
+.qf input:focus,.qf select:focus,.qf textarea:focus{outline:2px solid var(--accent);outline-offset:0;border-color:transparent}
+.qf .err{color:#B3261E;font-size:14px}
+:root[data-theme="dark"] .qf .err{color:#FF8A80}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .qf .err{color:#FF8A80}}
+.qf-done{grid-column:1 / -1;background:var(--ink);color:var(--bg);padding:18px 20px;display:grid;gap:6px}
+@media (max-width:860px){.quote{grid-template-columns:1fr}}
+@media (max-width:520px){form.qf{grid-template-columns:1fr}}
+
+footer{background:var(--ink);color:var(--bg);padding-block:40px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center}
+.foot .label{color:color-mix(in srgb,var(--bg) 60%,var(--ink))}
+.foot .brand-name{color:var(--bg)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="AJ &amp; Bro's Concreting home">
+      <span class="brand-mark">AJ</span>
+      <span class="brand-name">AJ &amp; Bro's<br><span style="font-weight:600;font-size:12px;letter-spacing:.14em">Concreting</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#finishes">Finishes</a>
+      <a href="#process">How we work</a>
+      <a href="#calculator">Calculator</a>
+      <a class="btn" href="#quote">Free quote</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="label">Residential &amp; commercial concreting · Sydney &amp; surrounds</span>
+        <h1>Poured right.<br><span class="hl">Finished</span> flat.</h1>
+        <p class="lede">Driveways, slabs, paths and pool surrounds, laid by two brothers who still run every pour themselves.</p>
+        <div class="hero-ctas">
+          <a class="btn" href="#quote">Get a free quote →</a>
+          <a class="btn ghost" href="#calculator">Work out your m³</a>
+        </div>
+      </div>
+      <div class="slab" aria-hidden="true">
+        <canvas id="heroSlab"></canvas>
+        <span class="slab-tag">Exposed aggregate · 32 MPa · 100 mm</span>
+      </div>
+    </div>
+
+    <div class="spec-strip">
+      <div class="spec"><span class="label">Standard driveway mix</span><b>32 MPa</b></div>
+      <div class="spec"><span class="label">Reinforcement</span><b>SL82</b></div>
+      <div class="spec"><span class="label">Quote turnaround</span><b>48 hrs</b></div>
+      <div class="spec"><span class="label">Workmanship warranty</span><b>7 yrs</b></div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <div style="display:grid;gap:14px"><span class="label">What we pour</span><h2>Services</h2></div>
+        <p>From a single garden path to a full commercial slab, every job gets the same site prep, the same mesh spacing and the same attention on finishing day.</p>
+      </div>
+      <div class="services">
+        <article class="svc"><span class="svc-icon"></span><h3>Driveways</h3><p>New driveways and full replacements, including removal of old concrete, crossovers and kerb work.</p><span class="spec-line">32 MPa · 100–125 mm · SL82 mesh</span></article>
+        <article class="svc"><span class="svc-icon"></span><h3>House &amp; shed slabs</h3><p>Engineered slabs for extensions, granny flats, garages and sheds, poured to your engineer's plans.</p><span class="spec-line">Waffle pod or raft · to AS 2870</span></article>
+        <article class="svc"><span class="svc-icon"></span><h3>Paths &amp; patios</h3><p>Side paths, entertaining areas and backyard patios with falls set so water runs away from the house.</p><span class="spec-line">25 MPa · 75–100 mm · 1:100 fall</span></article>
+        <article class="svc"><span class="svc-icon"></span><h3>Pool surrounds</h3><p>Non-slip finishes around the pool, with expansion joints set against coping and fencing.</p><span class="spec-line">Honed or broom · slip rating P4+</span></article>
+        <article class="svc"><span class="svc-icon"></span><h3>Coloured &amp; stencil</h3><p>Oxide-coloured concrete and stencilled patterns that give a paved look for a fraction of the upkeep.</p><span class="spec-line">Integral oxide · sealed on handover</span></article>
+        <article class="svc"><span class="svc-icon"></span><h3>Commercial &amp; repairs</h3><p>Warehouse floors, car park bays, cut-and-patch repairs and saw cutting for services.</p><span class="spec-line">40 MPa on request · laser screed</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="finishes" class="finishes-sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div style="display:grid;gap:14px"><span class="label">Pick your surface</span><h2>Finishes</h2></div>
+        <p>The finish decides how your concrete looks, how it grips and how it wears. We'll bring samples to the site visit so you can see them in daylight.</p>
+      </div>
+      <div class="finishes">
+        <div class="finish"><canvas data-finish="exposed" aria-hidden="true"></canvas><h3>Exposed aggregate</h3><p>Top paste washed back to show the stone. Our most popular driveway finish.</p></div>
+        <div class="finish"><canvas data-finish="broom" aria-hidden="true"></canvas><h3>Broom</h3><p>Fine brushed texture for grip. Great value for paths and sheds.</p></div>
+        <div class="finish"><canvas data-finish="honed" aria-hidden="true"></canvas><h3>Honed</h3><p>Ground back to a smooth, speckled surface. Sealed for pools and patios.</p></div>
+        <div class="finish"><canvas data-finish="coloured" aria-hidden="true"></canvas><h3>Coloured</h3><p>Oxide mixed through the whole slab, so chips don't show grey.</p></div>
+        <div class="finish"><canvas data-finish="stencil" aria-hidden="true"></canvas><h3>Stencil</h3><p>A paver or stone pattern pressed in before the concrete sets.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="sec-head">
+        <div style="display:grid;gap:14px"><span class="label">From quote to car-ready</span><h2>How a job runs</h2></div>
+        <p>Most driveways take three to five days on site, plus curing time. Here's what happens and when.</p>
+      </div>
+      <div class="process">
+        <div class="step"><span class="num">1</span><div class="bar"></div><span class="when">Day 0</span><h3>Site visit &amp; quote</h3><p>We measure up, check levels and access, and send a fixed written quote within 48 hours.</p></div>
+        <div class="step"><span class="num">2</span><div class="bar"></div><span class="when">Day 1–2</span><h3>Dig out &amp; formwork</h3><p>Excavation, compacted road base, formwork set to level, and mesh on bar chairs.</p></div>
+        <div class="step"><span class="num">3</span><div class="bar"></div><span class="when">Day 3</span><h3>The pour</h3><p>The truck arrives early. We place, screed and bull-float while the mix is workable.</p></div>
+        <div class="step"><span class="num">4</span><div class="bar"></div><span class="when">Day 3–4</span><h3>Finish &amp; cut</h3><p>Your chosen finish goes on, then control joints are saw cut to stop random cracking.</p></div>
+        <div class="step"><span class="num">5</span><div class="bar"></div><span class="when">Day 7–28</span><h3>Cure &amp; handover</h3><p>Foot traffic after 24 hrs, cars after 7 days. Full strength is reached at 28 days.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="calculator" class="calc-sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div style="display:grid;gap:14px"><span class="label">Quick estimate</span><h2>How much concrete?</h2></div>
+        <p>Enter your area to see roughly how many cubic metres you'll need. We add 10% for levels and spillage, and trucks deliver in 0.2 m³ steps.</p>
+      </div>
+      <div class="calc">
+        <div>
+          <div class="fields">
+            <div class="field"><label for="len">Length (m)</label><input id="len" type="number" inputmode="decimal" min="0" step="0.1" value="12"></div>
+            <div class="field"><label for="wid">Width (m)</label><input id="wid" type="number" inputmode="decimal" min="0" step="0.1" value="3.5"></div>
+            <div class="field"><label for="thk">Thickness</label>
+              <select id="thk">
+                <option value="75">75 mm</option>
+                <option value="100" selected>100 mm</option>
+                <option value="125">125 mm</option>
+                <option value="150">150 mm</option>
+              </select>
+            </div>
+          </div>
+          <div class="presets" role="group" aria-label="Example sizes">
+            <button class="chip" type="button" data-l="12" data-w="3.5" data-t="100">Single driveway 12 × 3.5</button>
+            <button class="chip" type="button" data-l="10" data-w="6" data-t="100">Double driveway 10 × 6</button>
+            <button class="chip" type="button" data-l="15" data-w="1" data-t="75">Side path 15 × 1</button>
+            <button class="chip" type="button" data-l="6" data-w="4" data-t="150">Shed slab 6 × 4</button>
+          </div>
+        </div>
+        <div class="result" aria-live="polite">
+          <span class="label">Order roughly</span>
+          <div class="big" id="outOrder">4.8<small>m³</small></div>
+          <dl>
+            <dt>Area</dt><dd id="outArea">42.0 m²</dd>
+            <dt>Exact volume</dt><dd id="outExact">4.20 m³</dd>
+            <dt>With 10% allowance</dt><dd id="outWaste">4.62 m³</dd>
+            <dt>Truck loads</dt><dd id="outTrucks">1</dd>
+          </dl>
+          <p class="note">This is a guide only. Your quote will be based on a site measure, including base depth and any thickened edges.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div style="display:grid;gap:14px"><span class="label">Why AJ &amp; Bro's</span><h2>Straight up concreting</h2></div>
+        <p>We're a family crew. The person who quotes your job is the person on the screed bar.</p>
+      </div>
+      <div class="why">
+        <div class="why-item"><h3>Fixed written quotes</h3><p>Every line itemised: demolition, base, mesh, concrete, finish and sealing. No surprise extras on pour day.</p></div>
+        <div class="why-item"><h3>Licensed &amp; insured</h3><p>Fully licensed with public liability cover. Certificates provided with your quote.</p></div>
+        <div class="why-item"><h3>Clean site, every day</h3><p>Wash-out bays, protected neighbouring surfaces and a swept site when we leave.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quote" class="quote-sec">
+    <div class="wrap quote">
+      <div class="quote-info">
+        <span class="label">Free, no-obligation</span>
+        <h2>Get a quote</h2>
+        <p style="color:var(--muted);max-width:44ch">Tell us about the job and we'll come out to measure. Photos of the area help us price it faster.</p>
+        <ul class="contact-list">
+          <li><span class="label">Phone</span><strong>0400 000 000</strong></li>
+          <li><span class="label">Email</span><strong>quotes@ajandbros.com.au</strong></li>
+          <li><span class="label">Hours</span><span>Mon–Fri 6:30am–5pm · Sat 7am–12pm</span></li>
+          <li><span class="label">Area</span><span>Sydney metro, Hills, Western Sydney &amp; Central Coast</span></li>
+        </ul>
+      </div>
+      <form class="qf" id="quoteForm" novalidate>
+        <div class="f"><label for="qName">Name</label><input id="qName" name="name" autocomplete="name" required></div>
+        <div class="f"><label for="qPhone">Phone</label><input id="qPhone" name="phone" type="tel" autocomplete="tel" required></div>
+        <div class="f"><label for="qSuburb">Suburb</label><input id="qSuburb" name="suburb" autocomplete="address-level2"></div>
+        <div class="f"><label for="qType">Job type</label>
+          <select id="qType" name="type">
+            <option>Driveway</option><option>House or shed slab</option><option>Path or patio</option><option>Pool surround</option><option>Coloured or stencil</option><option>Commercial or repair</option><option>Something else</option>
+          </select>
+        </div>
+        <div class="f full"><label for="qSize">Approx. size</label><input id="qSize" name="size" placeholder="e.g. 12 m × 3.5 m"></div>
+        <div class="f full"><label for="qMsg">About the job</label><textarea id="qMsg" name="message" placeholder="Existing concrete to remove? Access for a truck? Preferred finish?"></textarea></div>
+        <div class="full" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+          <button class="btn" type="submit">Request my quote</button>
+          <span class="err" id="qErr" hidden>Add your name and phone number so we can call you back.</span>
+        </div>
+        <div class="qf-done" id="qDone" hidden>
+          <strong style="font-family:var(--display);font-stretch:115%;text-transform:uppercase">Thanks, request received</strong>
+          <span id="qDoneText"></span>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="brand"><span class="brand-mark">AJ</span><span class="brand-name">AJ &amp; Bro's Concreting</span></div>
+    <span class="label">Licensed &amp; insured · ABN 00 000 000 000 · © 2026</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---------- concrete textures ----------
+  function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()}
+  function size(cv){var r=cv.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);cv.width=Math.max(1,Math.round(r.width*d));cv.height=Math.max(1,Math.round(r.height*d));var c=cv.getContext('2d');c.setTransform(d,0,0,d,0,0);return {c:c,w:r.width,h:r.height}}
+  function grain(c,w,h,r,n,alpha){for(var i=0;i<n;i++){c.fillStyle=r()<.5?'rgba(0,0,0,'+alpha+')':'rgba(255,255,255,'+alpha+')';c.fillRect(r()*w,r()*h,1,1)}}
+  function stones(c,w,h,r,count,min,max){
+    var cols=[css('--stone-a'),css('--stone-b'),css('--stone-c'),css('--muted')];
+    for(var i=0;i<count;i++){
+      var x=r()*w,y=r()*h,rad=min+r()*(max-min),pts=7+Math.floor(r()*4);
+      c.beginPath();
+      for(var k=0;k<pts;k++){var a=k/pts*Math.PI*2,rr=rad*(.72+r()*.38);var px=x+Math.cos(a)*rr,py=y+Math.sin(a)*rr*(.75+r()*.3);k?c.lineTo(px,py):c.moveTo(px,py)}
+      c.closePath();c.fillStyle=cols[Math.floor(r()*cols.length)];c.fill();
+      c.fillStyle='rgba(255,255,255,.18)';c.beginPath();c.ellipse(x-rad*.25,y-rad*.3,rad*.35,rad*.2,-.6,0,Math.PI*2);c.fill();
+    }
+  }
+  function paint(cv,kind){
+    var s=size(cv),c=s.c,w=s.w,h=s.h,r=rng(kind.length*977+13);
+    c.fillStyle=css('--paste');c.fillRect(0,0,w,h);
+    if(kind==='exposed'||kind==='hero'){
+      stones(c,w,h,r,Math.round(w*h/(kind==='hero'?55:40)),kind==='hero'?2.5:2,kind==='hero'?7:5.5);
+      grain(c,w,h,r,w*h*.25,.12);
+      if(kind==='hero'){ // saw-cut control joint
+        c.strokeStyle='rgba(0,0,0,.45)';c.lineWidth=2;c.beginPath();c.moveTo(0,h*.62);c.lineTo(w,h*.58);c.stroke();
+        c.strokeStyle='rgba(255,255,255,.25)';c.lineWidth=1;c.beginPath();c.moveTo(0,h*.62+2);c.lineTo(w,h*.58+2);c.stroke();
+      }
+    }else if(kind==='broom'){
+      grain(c,w,h,r,w*h*.3,.1);
+      for(var y=0;y<h;y+=1.4){c.strokeStyle='rgba(0,0,0,'+(.04+r()*.09)+')';c.lineWidth=.6+r()*.6;c.beginPath();c.moveTo(0,y);for(var x=0;x<=w;x+=w/6)c.lineTo(x,y+(r()-.5)*1.4);c.stroke()}
+    }else if(kind==='honed'){
+      var g=c.createLinearGradient(0,0,w,h);g.addColorStop(0,'rgba(255,255,255,.14)');g.addColorStop(1,'rgba(0,0,0,.06)');c.fillStyle=g;c.fillRect(0,0,w,h);
+      for(var i=0;i<w*h/28;i++){var cols=[css('--stone-a'),css('--stone-c'),css('--stone-b')];c.fillStyle=cols[i%3];c.beginPath();c.arc(r()*w,r()*h,.6+r()*2.2,0,Math.PI*2);c.fill()}
+      grain(c,w,h,r,w*h*.15,.06);
+    }else if(kind==='coloured'){
+      c.fillStyle='#8A5A44';c.fillRect(0,0,w,h);c.fillStyle='rgba(0,0,0,.08)';
+      for(var i=0;i<30;i++){c.globalAlpha=.08;c.beginPath();c.arc(r()*w,r()*h,10+r()*30,0,Math.PI*2);c.fill()}
+      c.globalAlpha=1;grain(c,w,h,r,w*h*.3,.12);
+    }else if(kind==='stencil'){
+      c.fillStyle='#6F6E68';c.fillRect(0,0,w,h);grain(c,w,h,r,w*h*.3,.12);
+      var bw=w/3.2,bh=w/6.4;c.strokeStyle=css('--paste');c.lineWidth=3;
+      for(var row=0;row*bh<h+bh;row++){var off=(row%2)*bw/2;c.beginPath();c.moveTo(0,row*bh);c.lineTo(w,row*bh);c.stroke();
+        for(var x=-off;x<w+bw;x+=bw){c.beginPath();c.moveTo(x,row*bh);c.lineTo(x,row*bh+bh);c.stroke()}}
+    }
+  }
+  function paintAll(){
+    var hero=document.getElementById('heroSlab');if(hero)paint(hero,'hero');
+    document.querySelectorAll('canvas[data-finish]').forEach(function(cv){paint(cv,cv.dataset.finish)});
+  }
+  var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(paintAll,150)});
+  try{new MutationObserver(paintAll).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});matchMedia('(prefers-color-scheme: dark)').addEventListener('change',paintAll)}catch(e){}
+  paintAll();
+
+  // ---------- calculator ----------
+  var L=document.getElementById('len'),W=document.getElementById('wid'),T=document.getElementById('thk');
+  function fmt(n,d){return n.toLocaleString('en-AU',{minimumFractionDigits:d,maximumFractionDigits:d})}
+  function calc(){
+    var l=parseFloat(L.value)||0,w=parseFloat(W.value)||0,t=parseFloat(T.value)/1000;
+    var area=l*w,exact=area*t,waste=exact*1.1,order=Math.ceil(waste/0.2-1e-9)*0.2;
+    document.getElementById('outArea').textContent=fmt(area,1)+' m²';
+    document.getElementById('outExact').textContent=fmt(exact,2)+' m³';
+    document.getElementById('outWaste').textContent=fmt(waste,2)+' m³';
+    document.getElementById('outOrder').innerHTML=fmt(order,1)+'<small>m³</small>';
+    document.getElementById('outTrucks').textContent=order>0?Math.ceil(order/6)+' × agitator (up to 6 m³)':'—';
+  }
+  [L,W,T].forEach(function(el){el.addEventListener('input',calc)});
+  document.querySelectorAll('.chip').forEach(function(b){b.addEventListener('click',function(){L.value=b.dataset.l;W.value=b.dataset.w;T.value=b.dataset.t;calc()})});
+  calc();
+
+  // ---------- quote form ----------
+  var f=document.getElementById('quoteForm');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var $=function(id){return document.getElementById(id)};
+    var name=$('qName').value.trim(),phone=$('qPhone').value.trim(),sub=$('qSuburb').value.trim(),err=$('qErr');
+    if(!name||!phone){err.hidden=false;(name?$('qPhone'):$('qName')).focus();return}
+    err.hidden=true;
+    $('qDoneText').textContent='We\'ll call '+name.split(' ')[0]+' on '+phone+' within one business day about the '+$('qType').value.toLowerCase()+(sub?' in '+sub:'')+'.';
+    document.getElementById('qDone').hidden=false;
+  });
+})();
+</script>
